@@ -15,4 +15,20 @@ function buildTree(array) {
     return root;
 }
 
+function balanceTree(array) {
+    if (array.length <= 0) {
+        return null;
+    }
+
+    const mid = (array.length - 1) / 2;
+
+    const node = new Node(array[mid]);
+
+    node.leftNode = balanceTree(array.slice(0, mid));
+    node.rightNode = balanceTree(array.slice(mid));
+
+    return node;
+}
+
+export { buildTree, balanceTree };
 export default Tree;
