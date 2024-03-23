@@ -26,7 +26,7 @@ function sortArrays(arrayLeft, arrayRight) {
         } else if (arrayLeft[leftI] > arrayRight[rightI] || leftI >= arrayLeft.length) {
             sortedArray[sortedI] = arrayRight[rightI];
             sortedI++;
-            leftI++;
+            rightI++;
         } else if (arrayLeft[leftI] === arrayRight[rightI]) {
             sortedArray[sortedI] = arrayLeft[leftI];
             leftI++;
