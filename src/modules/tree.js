@@ -31,37 +31,37 @@ Tree.prototype.insert = function(value) {
 
 }
 
-Tree.prototype.deleteItem = function(value) {
+Tree.prototype.deleteItem = function(root = this.root, value) {
     debugger;
-
-    function recursion(root) {
-        if (root.left != null && value == root.left.data) {
-            if (root.left.left) {
-                root.left = root.left.left
-            } else if (root.left.right) {
-                root.left = root.left.right
-            } else {
-                root.left = null;
-            }
-        } else if (root.right != null && value == root.right.data) {
-            if (root.right.left) {
-                root.right = root.right.left;
-            } else if (root.right.right) {
-                root.right = root.right.right;
-            } else {
-                root.right = null;
-            }
-
-        } else if (root.data == null) {
-            return;
-        } else if (value < root.data) {
-            return recursion(root.left);
-        } else if (value > root.data) {
-            return recursion(root.right);
+    if (root.data == null) {
+        return null;
+    }
+    if (root.left != null && value == root.left.data) {
+        const parent = root.left;
+        if (parent.left) {
+            parent = parent.left
+        } else if (parent.right) {
+            parent = parent.right
+        } else {
+            parent = null;
         }
-    } 
-
-    recursion(this.root);
+        root.left = parent;
+    } else if (root.right != null && value == root.right.data) {
+        const parent = root.right;
+        if (parent.left) {
+            parent = parent.left;
+        } else if (parent.right) {
+            parent = parent.right;
+        } else {
+            parent = null;
+        }
+        root.right = parent;
+        
+    } else if (value < root.data) {
+        return deleteItem(root.left, value);
+    } else if (value > root.data) {
+        return deleteItem(root.right, value);
+    }
 }
 
 function buildTree(array) {
