@@ -32,6 +32,33 @@ Tree.prototype.insert = function(value) {
 
 }
 
+Tree.prototype.deleteItem = function(value) {
+    debugger;
+    let rootNode = this.root;
+
+    function recursion(rootNode = this.root) {
+        if (!(rootNode.leftNode == null) && (rootNode.rightNode == null)) {
+            if (rootNode.leftNode.data == value) {
+                
+            } else {
+                rootNode == rootNode.leftNode;
+                return recursion();
+            }
+        }
+        // if (rootNode.leftNode.data == value || rootNode.rightNode.data == value) {
+        //     return rootNode;
+        // } else if (value < rootNode.data) {
+        //     rootNode = rootNode.leftNode;
+        // } else if (value > rootNode.data) {
+        //     rootNode = rootNode.rightNode;
+        // } else {
+        //     return null;
+        // }
+    }
+
+    recursion();
+}
+
 function buildTree(array) {
     const sortedArray = mergeSort(array);
 
