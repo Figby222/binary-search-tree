@@ -6,12 +6,12 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
     if (node === null) {
       return;
     }
-    if (node.rightNode !== null) {
-      prettyPrint(node.rightNode, `${prefix}${isLeft ? "│   " : "    "}`, false);
+    if (node.right !== null) {
+      prettyPrint(node.right, `${prefix}${isLeft ? "│   " : "    "}`, false);
     }
     console.log(`${prefix}${isLeft ? "└── " : "┌── "}${node.data}`);
-    if (node.leftNode !== null) {
-      prettyPrint(node.leftNode, `${prefix}${isLeft ? "    " : "│   "}`, true);
+    if (node.left !== null) {
+      prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
     }
   };
 

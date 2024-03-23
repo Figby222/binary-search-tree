@@ -7,23 +7,22 @@ const Tree = function(array) {
 }
 
 Tree.prototype.insert = function(value) {
-    debugger;
     const node = new Node(value);
     let rootNode = this.root;
     while(true) {
         if (node.data < rootNode.data) { // should go left
-            if (rootNode.leftNode === null) {
-                rootNode.leftNode = node;
+            if (rootNode.left === null) {
+                rootNode.left = node;
                 return;
             }
 
-            rootNode = rootNode.leftNode;
+            rootNode = rootNode.left;
         } else if (node.data > rootNode.data) { // should go right
-            if (rootNode.rightNode === null) {
-                rootNode.rightNode = node;
+            if (rootNode.right === null) {
+                rootNode.right = node;
                 return;
             }
-            rootNode = rootNode.rightNode;
+            rootNode = rootNode.right;
         } else { // they're even
             return; // no duplicates
         }
@@ -37,20 +36,26 @@ Tree.prototype.deleteItem = function(value) {
     let rootNode = this.root;
 
     function recursion(rootNode = this.root) {
-        if (!(rootNode.leftNode == null) && (rootNode.rightNode == null)) {
-            if (rootNode.leftNode.data == value) {
+        if (!(rootNode.left) && (rootNode.right)) {
+            if (rootNode.left.data == value) {
                 
             } else {
-                rootNode == rootNode.leftNode;
+                rootNode == rootNode.left;
                 return recursion();
             }
+        } else if ((rootNode.left) && !(rootNode.right)) {
+            
+        } else if (rootNode.left && rootNode.right) {
+
+        } else {
+            return;
         }
-        // if (rootNode.leftNode.data == value || rootNode.rightNode.data == value) {
+        // if (rootNode.left.data == value || rootNode.right.data == value) {
         //     return rootNode;
         // } else if (value < rootNode.data) {
-        //     rootNode = rootNode.leftNode;
+        //     rootNode = rootNode.left;
         // } else if (value > rootNode.data) {
-        //     rootNode = rootNode.rightNode;
+        //     rootNode = rootNode.right;
         // } else {
         //     return null;
         // }
@@ -76,8 +81,8 @@ function balanceTree(array) {
 
     const node = new Node(array[mid]);
 
-    node.leftNode = balanceTree(array.slice(0, mid));
-    node.rightNode = balanceTree(array.slice(mid + 1));
+    node.left = balanceTree(array.slice(0, mid));
+    node.right = balanceTree(array.slice(mid + 1));
 
     return node;
 }
