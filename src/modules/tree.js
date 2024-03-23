@@ -37,7 +37,7 @@ Tree.prototype.deleteItem = function(root = this.root, value) {
         return null;
     }
     if (root.left != null && value == root.left.data) {
-        const parent = root.left;
+        let parent = root.left;
         if (parent.left) {
             parent = parent.left
         } else if (parent.right) {
@@ -47,7 +47,7 @@ Tree.prototype.deleteItem = function(root = this.root, value) {
         }
         root.left = parent;
     } else if (root.right != null && value == root.right.data) {
-        const parent = root.right;
+        let parent = root.right;
         if (parent.left) {
             parent = parent.left;
         } else if (parent.right) {
@@ -56,11 +56,11 @@ Tree.prototype.deleteItem = function(root = this.root, value) {
             parent = null;
         }
         root.right = parent;
-        
+
     } else if (value < root.data) {
-        return deleteItem(root.left, value);
+        return this.deleteItem(root.left, value);
     } else if (value > root.data) {
-        return deleteItem(root.right, value);
+        return this.deleteItem(root.right, value);
     }
 }
 
