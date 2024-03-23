@@ -20,7 +20,7 @@ function balanceTree(array) {
         return null;
     }
 
-    const mid = (array.length - 1) / 2;
+    const mid = Math.floor((array.length - 1) / 2);
 
     const node = new Node(array[mid]);
 
