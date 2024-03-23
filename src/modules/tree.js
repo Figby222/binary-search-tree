@@ -2,33 +2,34 @@ import mergeSort from './merge-sort.js';
 import Node from './node.js';
 
 const Tree = function(array) {
-    return {
-        root: buildTree(array),
-        insert: function(value) {
-            debugger;
-            const node = new Node(value);
-            let rootNode = this.root;
-            while(true) {
-                if (node.data < rootNode.data) { // should go left
-                    if (rootNode.leftNode === null) {
-                        rootNode.leftNode = node;
-                        return;
-                    }
+    this.root = buildTree(array);
+    
+}
 
-                    rootNode = rootNode.leftNode;
-                } else if (node.data > rootNode.data) { // should go right
-                    if (rootNode.rightNode === null) {
-                        rootNode.rightNode = node;
-                        return;
-                    }
-                    rootNode = rootNode.rightNode;
-                } else { // they're even
-                    return; // no duplicates
-                }
-
+Tree.prototype.insert = function(value) {
+    debugger;
+    const node = new Node(value);
+    let rootNode = this.root;
+    while(true) {
+        if (node.data < rootNode.data) { // should go left
+            if (rootNode.leftNode === null) {
+                rootNode.leftNode = node;
+                return;
             }
+
+            rootNode = rootNode.leftNode;
+        } else if (node.data > rootNode.data) { // should go right
+            if (rootNode.rightNode === null) {
+                rootNode.rightNode = node;
+                return;
+            }
+            rootNode = rootNode.rightNode;
+        } else { // they're even
+            return; // no duplicates
         }
+
     }
+
 }
 
 function buildTree(array) {
