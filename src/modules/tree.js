@@ -25,7 +25,7 @@ function balanceTree(array) {
     const node = new Node(array[mid]);
 
     node.leftNode = balanceTree(array.slice(0, mid));
-    node.rightNode = balanceTree(array.slice(mid));
+    node.rightNode = balanceTree(array.slice(mid + 1));
 
     return node;
 }
