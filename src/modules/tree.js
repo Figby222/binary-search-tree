@@ -5,8 +5,9 @@ const Tree = function(array) {
     return {
         root: buildTree(array),
         insert: function(value) {
+            debugger;
             const node = new Node(value);
-            const rootNode = this.root;
+            let rootNode = this.root;
             while(true) {
                 if (node.data < rootNode.data) { // should go left
                     if (rootNode.leftNode === null) {

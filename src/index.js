@@ -18,4 +18,9 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 const myTree = new Tree([24, 12, 51, 33, 22, 1, 35, 21]);
 
 prettyPrint(myTree.root);
-
+myTree.insert(222);
+prettyPrint(myTree.root);
+myTree.insert(42);
+prettyPrint(myTree.root);
+myTree.insert(25);
+prettyPrint(myTree.root);
