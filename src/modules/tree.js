@@ -1,4 +1,5 @@
-import mergeSort from './modules/merge-sort.js'
+import mergeSort from './merge-sort.js';
+import Node from './node.js';
 
 const Tree = function(array) {
     return {
