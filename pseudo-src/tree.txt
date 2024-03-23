@@ -1,0 +1,54 @@
+Create a factory called Tree
+    return an object with the following properties:
+        root: buildTree()
+
+Create a function buildTree which takes an array
+    Set sortedArr = the return value of mergeSort(array)
+
+    set root = balanceTree(sortedArr)
+
+    return root
+
+
+Create a function mergeSort that takes an array
+    If arg.length <= 1
+        return arg
+
+    Set sortedArr = []
+    
+    Set arrayLeft = mergeSort(arg.slice(0, (arg.length() - 1) / 2))
+    set arrayRight = mergeSort(arg.slice((arg.length() - 1) / 2))
+
+    set sortedArr = sortNums(arrayLeft, arrayRight)
+
+    return sortedArr
+
+Create a function sortNums that takes arrayLeft and arrayRight
+    set leftI = 0; rightI = 0; sortedI = 0;
+    set sorted = []
+    while leftI is less than arrayLeft length or rightI is less than arrayRight length
+        if arrayLeft[leftI] < arrayRight[rightI] and leftI is less than arrayLeft.length()
+            Set sorted[sortedI] = arrayLeft[leftI]
+            increment sortedI and leftI
+        else if arrayLeft[leftI] > arrayRight[rightI] and rightI is less than arrayLeft.length()
+            Set sorted[sortedI] = arrayRight[rightI]
+            increment sortedI and rightI
+        else
+            break
+    
+    return sorted
+
+    
+Create a function balanceTree which takes a sorted array
+
+    return null if arg.length <= 0
+
+    Set mid = (arg.length - 1) / 2
+
+    Set node = new Node(mid)
+    
+    Set node.leftNode = balanceTree(arg.slice(0, mid))
+    Set node.rightNode = balanceTree(arg.slice(mid + 1))
+
+    return node
+

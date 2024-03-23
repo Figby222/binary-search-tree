@@ -1,0 +1,8 @@
+Create a factory function called Node
+    Set variables: data; leftNode = null; rightNode = null
+
+    Create function setLeft that takes a node parameter
+        Set *this* leftNode to node
+
+    Create function setRight that takes a node parameter
+        Set *this* rightNode to node
