@@ -33,35 +33,22 @@ Tree.prototype.insert = function(value) {
 
 Tree.prototype.deleteItem = function(value) {
     debugger;
-    let rootNode = this.root;
 
-    function recursion(rootNode = this.root) {
-        if (!(rootNode.left) && (rootNode.right)) {
-            if (rootNode.left.data == value) {
-                
-            } else {
-                rootNode == rootNode.left;
-                return recursion();
-            }
-        } else if ((rootNode.left) && !(rootNode.right)) {
-            
-        } else if (rootNode.left && rootNode.right) {
-
-        } else {
+    function recursion(root) {
+        if (root.left != null && value == root.left.data) {
+            root.left = null;
+        } else if (root.right != null && value == root.right.data) {
+            root.right = null;
+        } else if (root.data == null) {
             return;
+        } else if (value < root.data) {
+            return recursion(root.left);
+        } else if (value > root.data) {
+            return recursion(root.right);
         }
-        // if (rootNode.left.data == value || rootNode.right.data == value) {
-        //     return rootNode;
-        // } else if (value < rootNode.data) {
-        //     rootNode = rootNode.left;
-        // } else if (value > rootNode.data) {
-        //     rootNode = rootNode.right;
-        // } else {
-        //     return null;
-        // }
-    }
+    } 
 
-    recursion();
+    recursion(this.root);
 }
 
 function buildTree(array) {

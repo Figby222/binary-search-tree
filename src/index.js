@@ -24,4 +24,7 @@ myTree.insert(42);
 prettyPrint(myTree.root);
 myTree.insert(25);
 prettyPrint(myTree.root);
-myTree.deleteItem(51);
+myTree.deleteItem(1);
+prettyPrint(myTree.root);
+myTree.deleteItem(222);
+prettyPrint(myTree.root);
