@@ -36,9 +36,22 @@ Tree.prototype.deleteItem = function(value) {
 
     function recursion(root) {
         if (root.left != null && value == root.left.data) {
-            root.left = null;
+            if (root.left.left) {
+                root.left = root.left.left
+            } else if (root.left.right) {
+                root.left = root.left.right
+            } else {
+                root.left = null;
+            }
         } else if (root.right != null && value == root.right.data) {
-            root.right = null;
+            if (root.right.left) {
+                root.right = root.right.left;
+            } else if (root.right.right) {
+                root.right = root.right.right;
+            } else {
+                root.right = null;
+            }
+
         } else if (root.data == null) {
             return;
         } else if (value < root.data) {
