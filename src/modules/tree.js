@@ -82,8 +82,8 @@ Tree.prototype.deleteItem = function(root = this.root, value) {
         }
     }
 
-    const secondSmallestFromRight = this.getSmallest(target.right);
-    if(!(secondSmallestFromRight)) { // if !(target.right.left)
+    const nextSmallest = this.getSmallest(target.right);
+    if(!(nextSmallest)) { // if !(target.right.left)
         // there is one child or no children
         if (target.right) {
             // set root.right or .left to target.right
@@ -104,12 +104,12 @@ Tree.prototype.deleteItem = function(root = this.root, value) {
         return;
     }
 
-    target.data = secondSmallestFromRight.data;
+    target.data = nextSmallest.data;
 
-    if (secondSmallestFromRight.left.right) { // smallest has a child
-        secondSmallestFromRight.left = secondSmallestFromRight.left.right;
+    if (nextSmallest.right) { // smallest has a child
+        nextSmallest = nextSmallest.right;
     } else { // smallest has no children
-        secondSmallestFromRight.left = null;
+        nextSmallest = null;
     }
 
 }
