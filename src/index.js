@@ -41,4 +41,4 @@ console.log(myTree.find(myTree.root, 24));
 
 debugger;
 // myTree.levelOrder(myTree.root);
-myTree.preOrder(myTree.root);
+myTree.postOrder(myTree.root);

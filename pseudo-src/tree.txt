@@ -138,6 +138,20 @@ Create function preOrder(root = this.root, callback = null)
     call recursion(root)
 
     for each node in queue call callback(queue)
-    
+
+Create function postOrder(root = this.root, callback = null)
+    set queue = []
+
+    Create function recursion(current)
+        if current is null return
+
+        call recursion(current.left)
+        call recursion(current.right)
+        push current to queue
+
+call recursion(root)
+
+for each node in queue call callback(queue)
+
 createfunction levelOrderDefault(node)
     
