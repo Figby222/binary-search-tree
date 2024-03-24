@@ -106,11 +106,13 @@ Tree.prototype.deleteItem = function(root = this.root, value) {
 
     target.data = nextSmallest.data;
 
-    if (nextSmallest.right) { // smallest has a child
-        nextSmallest = nextSmallest.right;
-    } else { // smallest has no children
-        nextSmallest = null;
-    }
+    this.deleteItem(this.root, nextSmallest.data);
+
+    // if (nextSmallest.right) { // smallest has a child
+    //     nextSmallest = nextSmallest.right;
+    // } else { // smallest has no children
+    //     nextSmallest = null;
+    // }
 
 }
 
