@@ -82,17 +82,19 @@ Tree.prototype.deleteItem = function(root = this.root, value) {
         }
     }
 
-    if(!('left' in target) && !('right' in target)) { // there are no children
-        if ('right' in root && target == root.right) {
+    debugger;
+
+    if(target.left == null && target.right == null) { // there are no children
+        if (root.right != null && target == root.right) {
             root.right = null;
-        } else if ('left' in root && target == root.left) {
+        } else if (root.left != null && target == root.left) {
             root.left = null;
         }
         return;
     }
 
     
-    if (!('left' in target) && ('right' in target)) {
+    if (target.left == null && target.right != null) {
         // set root.right or .left to target.right
         if (root.right == target) { //target is right from root
             root.right = target.right;
@@ -100,21 +102,24 @@ Tree.prototype.deleteItem = function(root = this.root, value) {
             root.left = target.right;
         }
         return;
-    } else if (('left' in target) && !('right' in target)) {
+    } else if (target.left != null && target.right == null) {
         // set root.right or .left to null
         if (root.right == target) { //target is right from root
-            root.right = null;
+            root.right = target.left;
         } else { // target is left from root
-            root.left = null;
+            root.left = target.left;
         }
         return;
     }
 
     const nextSmallest = this.getSmallest(target.right);
 
-    target.data = nextSmallest.data;
-
     this.deleteItem(this.root, nextSmallest.data);
+
+    const temp = nextSmallest.data;
+    
+    target.data = temp;
+
 
     // if (nextSmallest.right) { // smallest has a child
     //     nextSmallest = nextSmallest.right;
@@ -125,7 +130,7 @@ Tree.prototype.deleteItem = function(root = this.root, value) {
 }
 
 Tree.prototype.getSmallest = function(root) {
-    if (!Object.hasOwnProperty(root, "left")) {
+    if (root.left == null) {
         return root;
     }
 
