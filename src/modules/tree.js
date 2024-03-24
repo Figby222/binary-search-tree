@@ -82,27 +82,35 @@ Tree.prototype.deleteItem = function(root = this.root, value) {
         }
     }
 
-    const nextSmallest = this.getSmallest(target.right);
-    if(!(nextSmallest)) { // if !(target.right.left)
-        // there is one child or no children
-        if (target.right) {
-            // set root.right or .left to target.right
-            if (root.right == target) { //target is right from root
-                root.right = target.right;
-            } else { // target is left from root
-                root.left = target.right;
-            }
-        } else {
-            // set root.right or .left to null
-            if (root.right == target) { //target is right from root
-                root.right = null;
-            } else { // target is left from root
-                root.left = null;
-            }
+    if(!('left' in target) && !('right' in target)) { // there are no children
+        if ('right' in root && target == root.right) {
+            root.right = null;
+        } else if ('left' in root && target == root.left) {
+            root.left = null;
         }
-
         return;
     }
+
+    
+    if (!('left' in target) && ('right' in target)) {
+        // set root.right or .left to target.right
+        if (root.right == target) { //target is right from root
+            root.right = target.right;
+        } else { // target is left from root
+            root.left = target.right;
+        }
+        return;
+    } else if (('left' in target) && !('right' in target)) {
+        // set root.right or .left to null
+        if (root.right == target) { //target is right from root
+            root.right = null;
+        } else { // target is left from root
+            root.left = null;
+        }
+        return;
+    }
+
+    const nextSmallest = this.getSmallest(target.right);
 
     target.data = nextSmallest.data;
 
