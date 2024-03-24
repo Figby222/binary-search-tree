@@ -33,3 +33,7 @@ prettyPrint(myTree.root);
 myTree.deleteItem(myTree.root, 33);
 console.log("33 deleted");
 prettyPrint(myTree.root);
+debugger;
+myTree.deleteItem(myTree.root, 22);
+console.log("22 deleted");
+prettyPrint(myTree.root);

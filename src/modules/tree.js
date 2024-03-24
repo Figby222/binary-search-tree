@@ -32,7 +32,6 @@ Tree.prototype.insert = function(value) {
 }
 
 Tree.prototype.deleteItem = function(root = this.root, value) {
-    debugger;
     
     // if (root.left != null && value == root.left.data) { // 1 child, left target
     //     let parent = root.left;
@@ -82,7 +81,6 @@ Tree.prototype.deleteItem = function(root = this.root, value) {
         }
     }
 
-    debugger;
 
     if(target.left == null && target.right == null) { // there are no children
         if (root.right != null && target == root.right) {
@@ -117,7 +115,7 @@ Tree.prototype.deleteItem = function(root = this.root, value) {
     this.deleteItem(this.root, nextSmallest.data);
 
     const temp = nextSmallest.data;
-    
+
     target.data = temp;
 
 
@@ -134,7 +132,7 @@ Tree.prototype.getSmallest = function(root) {
         return root;
     }
 
-    return getSmallest(root.left);
+    return this.getSmallest(root.left);
 }
 
 function buildTree(array) {
