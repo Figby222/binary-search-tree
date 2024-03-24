@@ -203,5 +203,22 @@ function levelOrderDefault(node) {
     console.log(node.data);
 }
 
+Tree.prototype.inOrder = function(root = this.root, callback = levelOrderDefault) {
+    let queue = []
+    queue.push(root)
+
+    function recursion(current) {
+        if (current == null) {
+            return;
+        }
+
+        recursion(current.left);
+        queue.push(current);
+        recursion(current.right);
+    }
+
+    recursion(root);
+}
+
 export { buildTree, balanceTree };
 export default Tree;
