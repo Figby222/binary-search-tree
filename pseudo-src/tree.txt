@@ -45,10 +45,73 @@ Create a function balanceTree which takes a sorted array
 
     Set mid = (arg.length - 1) / 2
 
-    Set node = new Node(mid)
+    Set node = new Node(arg[mid])
     
-    Set node.leftNode = balanceTree(arg.slice(0, mid))
-    Set node.rightNode = balanceTree(arg.slice(mid + 1))
+    Set node.left = balanceTree(arg.slice(0, mid))
+    Set node.right = balanceTree(arg.slice(mid + 1))
 
     return node
 
+Create a function deleteItem(value)
+    The following will follow in the case that the value is a leaf node
+        Create function recursion(root = this.root)
+            The following are assuming the node is a leaf node
+                if root.left != null and value == root.left.data
+                    root.left = null
+                    return
+                otherwise if root.right != null and value == root.right.data
+                    root.right = null
+                    return
+                otherwise if root.data == null
+                    return
+                otherwise if value < root.data
+                    return recursion(root.left)
+                otherwise if value > root.data
+                    return recursion(root.right)
+
+
+
+Create function inorder(root, value) 
+    If root is null
+        return;
+    Otherwise call inorder(root.left, value)
+    If root data is equal to value
+        return root
+    Otherwise call inorder(root.right, value)
+
+Create function levelOrder(node = this.root, callback = levelOrderDefault)
+    set right to node.right
+    set left to node.left
+    If typeof callBack == levelOrderDefault
+        if node is null return []
+
+        set array to empty array
+
+        Push callback(node) to array
+        push levelOrder(right) to array
+        push levelOrder(left) to array
+
+        return array concatenated with levelOrder(node)
+    Otherwise call callback(node)
+    Call levelOrder(right)
+    Call levelOrder(left)
+
+Create function levelOrder(node = this.root, callback = levelOrderDefault)
+    set right to node.right
+    set left to node.left
+    If typeof callBack == levelOrderDefault
+        if node is null return []
+
+        set array to empty array
+
+        Push callback(node) to array
+        push levelOrder(right) to array
+        push levelOrder(left) to array
+        
+        return array concatenated with levelOrder(node)
+    Otherwise call callback(node)
+    Call levelOrder(right)
+    Call levelOrder(left)
+
+createfunction levelOrderDefault(node)
+    
