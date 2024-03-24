@@ -79,22 +79,19 @@ Create function inorder(root, value)
         return root
     Otherwise call inorder(root.right, value)
 
-Create function levelOrder(node = this.root, callback = levelOrderDefault)
-    set right to node.right
-    set left to node.left
-    If typeof callBack == levelOrderDefault
-        if node is null return []
+Create function levelOrder(root = this.root, callback = levelOrderDefault)
+    Set queue to []
+    push root to queue
 
-        set array to empty array
+    create function recursion(current)
+        if queue[current] is empty return null
+        Set current to 0
 
-        Push callback(node) to array
-        push levelOrder(right) to array
-        push levelOrder(left) to array
+        push queue[current].right to queue
+        push queue[current].left to queue
+        call recursion[current + 1]
 
-        return array concatenated with levelOrder(node)
-    Otherwise call callback(node)
-    Call levelOrder(right)
-    Call levelOrder(left)
+    for each node in queue call callback(node)
 
 Create function levelOrder(node = this.root, callback = levelOrderDefault)
     set right to node.right
@@ -112,6 +109,23 @@ Create function levelOrder(node = this.root, callback = levelOrderDefault)
     Otherwise call callback(node)
     Call levelOrder(right)
     Call levelOrder(left)
+
+Create function inOrder(root = this.root, callback = null)
+    Set queue = []
+    set current = []
+    
+    push root to queue
+
+    Create a function recursion(current)
+        if current is null return
+        
+        call recursion(current.left)
+        push current to queue
+        call recursion(current.right)
+
+    call recursion(root)
+    for each node in queue call callback(queue)
+
 
 createfunction levelOrderDefault(node)
     
