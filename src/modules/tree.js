@@ -158,5 +158,21 @@ function balanceTree(array) {
     return node;
 }
 
+Tree.prototype.find = function(root, value) {
+    if (root == null) {
+        return;
+    }
+
+    let data = false;
+
+    data = this.find(root.left, value);
+    if (root.data == value) {
+        return root;
+    }
+    data = this.find(root.right, value);
+
+    return data;
+}
+
 export { buildTree, balanceTree };
 export default Tree;
