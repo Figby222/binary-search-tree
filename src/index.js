@@ -36,6 +36,8 @@ prettyPrint(myTree.root);
 myTree.deleteItem(myTree.root, 22);
 console.log("22 deleted");
 prettyPrint(myTree.root);
-debugger;
 console.log(myTree.find(myTree.root, 35));
 console.log(myTree.find(myTree.root, 24));
+
+debugger;
+myTree.levelOrder(myTree.root);

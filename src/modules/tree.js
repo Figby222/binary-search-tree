@@ -174,5 +174,34 @@ Tree.prototype.find = function(root, value) {
     return data;
 }
 
+Tree.prototype.levelOrder = function(root = this.root, callback = levelOrderDefault) {
+    let queue = [];
+    queue.push(root);
+    let current = 0;
+    function recursion(current) {
+        if (!queue[current]) {
+            return;
+        }
+
+        if (queue[current].left != null) {
+            queue.push(queue[current.left]);
+        }
+
+        if (queue[current].right != null) {
+            queue.push(queue[current.right]);
+        }
+
+        recursion(current + 1);
+    }
+
+    recursion(current);
+    queue.forEach((node) => callback(node))
+    
+}
+
+function levelOrderDefault(node) {
+    console.log(node.data);
+}
+
 export { buildTree, balanceTree };
 export default Tree;
