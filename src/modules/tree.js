@@ -82,7 +82,7 @@ Tree.prototype.deleteItem = function(root = this.root, value) {
         }
     }
 
-    const secondSmallestFromRight = getSecondSmallest(target.right);
+    const secondSmallestFromRight = this.getSecondSmallest(target.right);
     if(!(secondSmallestFromRight)) { // if !(target.right.left)
         // there is one child or no children
         if (target.right) {
@@ -114,7 +114,7 @@ Tree.prototype.deleteItem = function(root = this.root, value) {
 
 }
 
-function getSecondSmallest(root) {
+Tree.prototype.getSecondSmallest = function(root) {
     if (!Object.hasOwnProperty(root, "left")) {
         return false;
     }

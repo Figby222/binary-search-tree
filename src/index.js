@@ -28,3 +28,5 @@ myTree.deleteItem(myTree.root, 1);
 prettyPrint(myTree.root);
 myTree.deleteItem(myTree.root, 222);
 prettyPrint(myTree.root);
+myTree.deleteItem(myTree.root, 33);
+prettyPrint(myTree.root);
