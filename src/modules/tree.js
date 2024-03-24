@@ -115,11 +115,11 @@ Tree.prototype.deleteItem = function(root = this.root, value) {
 }
 
 function getSecondSmallest(root) {
-    if (root.left == null) {
+    if (!Object.hasOwnProperty(root, "left")) {
         return false;
     }
 
-    if (root.left.left == null) {
+    if (!Object.hasOwnProperty(root.left, "left")) {
         return root;
     }
 
