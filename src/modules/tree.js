@@ -36,7 +36,7 @@ Tree.prototype.deleteItem = function(root = this.root, value) {
     if (root.data == null) {
         return null;
     }
-    if (root.left != null && value == root.left.data) {
+    if (root.left != null && value == root.left.data) { // 1 child, left target
         let parent = root.left;
         if (parent.left) {
             parent = parent.left
@@ -46,7 +46,7 @@ Tree.prototype.deleteItem = function(root = this.root, value) {
             parent = null;
         }
         root.left = parent;
-    } else if (root.right != null && value == root.right.data) {
+    } else if (root.right != null && value == root.right.data) { // 1 child, right
         let parent = root.right;
         if (parent.left) {
             parent = parent.left;
@@ -62,6 +62,18 @@ Tree.prototype.deleteItem = function(root = this.root, value) {
     } else if (value > root.data) {
         return this.deleteItem(root.right, value);
     }
+}
+
+function getSecondSmallest(root) {
+    if (root.left == null) {
+        return false;
+    }
+
+    if (root.left.left == null) {
+        return root;
+    }
+
+    return getSecondSmallest(root.left);
 }
 
 function buildTree(array) {
