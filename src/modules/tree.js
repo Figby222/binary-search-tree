@@ -205,7 +205,6 @@ function levelOrderDefault(node) {
 
 Tree.prototype.inOrder = function(root = this.root, callback = levelOrderDefault) {
     let queue = []
-    queue.push(root)
 
     function recursion(current) {
         if (current == null) {
@@ -218,6 +217,8 @@ Tree.prototype.inOrder = function(root = this.root, callback = levelOrderDefault
     }
 
     recursion(root);
+
+    queue.forEach((node) => callback(node));
 }
 
 export { buildTree, balanceTree };

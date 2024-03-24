@@ -40,4 +40,5 @@ console.log(myTree.find(myTree.root, 35));
 console.log(myTree.find(myTree.root, 24));
 
 debugger;
-myTree.levelOrder(myTree.root);
+// myTree.levelOrder(myTree.root);
+myTree.inOrder(myTree.root);
