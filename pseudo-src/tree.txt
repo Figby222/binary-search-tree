@@ -112,7 +112,6 @@ Create function levelOrder(node = this.root, callback = levelOrderDefault)
 
 Create function inOrder(root = this.root, callback = null)
     Set queue = []
-    set current = []
     
     push root to queue
 
@@ -126,6 +125,19 @@ Create function inOrder(root = this.root, callback = null)
     call recursion(root)
     for each node in queue call callback(queue)
 
+Create function preOrder(root = this.root, callback = null)
+    set queue = []
 
+    Create function recursion(current)
+        if current is null return
+
+        push current to queue
+        call recursion(current.left)
+        call recursion(current.right)
+
+    call recursion(root)
+
+    for each node in queue call callback(queue)
+    
 createfunction levelOrderDefault(node)
     

@@ -221,5 +221,23 @@ Tree.prototype.inOrder = function(root = this.root, callback = levelOrderDefault
     queue.forEach((node) => callback(node));
 }
 
+Tree.prototype.preOrder = function(root = this.root, callback = levelOrderDefault) {
+    let queue = [];
+
+    function recursion(current) {
+        if (current == null) {
+            return;
+        }
+
+        queue.push(current);
+        recursion(current.left);
+        recursion(current.right);
+    }
+
+    recursion(root);
+
+    queue.forEach((node) => callback(node));
+}
+
 export { buildTree, balanceTree };
 export default Tree;
