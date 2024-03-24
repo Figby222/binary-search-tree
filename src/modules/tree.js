@@ -33,35 +33,85 @@ Tree.prototype.insert = function(value) {
 
 Tree.prototype.deleteItem = function(root = this.root, value) {
     debugger;
+    
+    // if (root.left != null && value == root.left.data) { // 1 child, left target
+    //     let parent = root.left;
+    //     if (parent.left) {
+    //         parent = parent.left
+    //     } else if (parent.right) {
+    //         parent = parent.right
+    //     } else {
+    //         parent = null;
+    //     }
+    //     root.left = parent;
+    // } else if (root.right != null && value == root.right.data) { // 1 child, right
+    //     let parent = root.right;
+    //     if (parent.left) {
+    //         parent = parent.left;
+    //     } else if (parent.right) {
+    //         parent = parent.right;
+    //     } else {
+    //         parent = null;
+    //     }
+    //     root.right = parent;
+
+    // } else if (value < root.data) {
+    //     return this.deleteItem(root.left, value);
+    // } else if (value > root.data) {
+    //     return this.deleteItem(root.right, value);
+    // }
+
+    // 2 children
     if (root.data == null) {
         return null;
     }
-    if (root.left != null && value == root.left.data) { // 1 child, left target
-        let parent = root.left;
-        if (parent.left) {
-            parent = parent.left
-        } else if (parent.right) {
-            parent = parent.right
-        } else {
-            parent = null;
+    
+    let target;
+    while (!target) {
+        if (root.left && value == root.left.data) {
+            target = root.left;
+        } else if (root.right && value == root.right.data) {
+            target = root.right;
+        } else if (value < root.data) {
+            root = root.left;
+        } else if (value > root.data) {
+            root = root.right
+        } else if (value == root.data) {
+            target = root;
+            // do something
         }
-        root.left = parent;
-    } else if (root.right != null && value == root.right.data) { // 1 child, right
-        let parent = root.right;
-        if (parent.left) {
-            parent = parent.left;
-        } else if (parent.right) {
-            parent = parent.right;
-        } else {
-            parent = null;
-        }
-        root.right = parent;
-
-    } else if (value < root.data) {
-        return this.deleteItem(root.left, value);
-    } else if (value > root.data) {
-        return this.deleteItem(root.right, value);
     }
+
+    const secondSmallestFromRight = getSecondSmallest(target.right);
+    if(!(secondSmallestFromRight)) { // if !(target.right.left)
+        // there is one child or no children
+        if (target.right) {
+            // set root.right or .left to target.right
+            if (root.right == target) { //target is right from root
+                root.right = target.right;
+            } else { // target is left from root
+                root.left = target.right;
+            }
+        } else {
+            // set root.right or .left to null
+            if (root.right == target) { //target is right from root
+                root.right = null;
+            } else { // target is left from root
+                root.left = null;
+            }
+        }
+
+        return;
+    }
+
+    target.data = secondSmallestFromRight.data;
+
+    if (secondSmallestFromRight.left.right) { // smallest has a child
+        secondSmallestFromRight.left = secondSmallestFromRight.left.right;
+    } else { // smallest has no children
+        secondSmallestFromRight.left = null;
+    }
+
 }
 
 function getSecondSmallest(root) {
