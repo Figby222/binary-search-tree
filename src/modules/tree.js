@@ -184,18 +184,18 @@ Tree.prototype.levelOrder = function(root = this.root, callback = levelOrderDefa
         }
 
         if (queue[current].left != null) {
-            queue.push(queue[current.left]);
+            queue.push(queue[current].left);
         }
 
         if (queue[current].right != null) {
-            queue.push(queue[current.right]);
+            queue.push(queue[current].right);
         }
 
         recursion(current + 1);
     }
 
     recursion(current);
-    queue.forEach((node) => callback(node))
+    queue.forEach((node) => callback(node));
     
 }
 
