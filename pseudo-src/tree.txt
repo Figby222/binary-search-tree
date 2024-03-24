@@ -149,9 +149,86 @@ Create function postOrder(root = this.root, callback = null)
         call recursion(current.right)
         push current to queue
 
-call recursion(root)
+    call recursion(root)
 
-for each node in queue call callback(queue)
+    for each node in queue call callback(queue)
 
-createfunction levelOrderDefault(node)
+Create function height(node = this.root)
+    set maxHeight = 0
+
+    Create function recursion(current, currentHeight)
+        if current is null return
+
+        call recursion(current.left, currentHeight + 1)
+        call recursion(current.right, currentHeight + 1)
+        if currentHeight > maxHeight
+            set maxHeight to currentHeight
+    
+    call recursion(node, maxHeight)
+
+    return maxHeight
+    
+Create function heightRecursive(current = this.root, currentHeight = 0)
+    if current is null return
+    set maxHeight = 0;
+    
+    set left = heightRecursive(current.left, currentHeight + 1)
+    set right = heightRecursive(current.right, currentHeight + 1)
+
+    if (left > maxHeight) {
+        maxHeight = left;
+    }
+
+    if (right > maxHeight) {
+        maxHeight = right;
+    }
+
+    return maxHeight;
+
+Create function isBalanced(current = this.root, currentHeight = 0)
+    if current is null return
+    set maxHeight = 0;
+
+    set left = isBalanced(current.left, currentHeight + 1)
+    set right = isBalanced(current.right, currentHeight + 1)
+
+    if (left > right)
+        if left > right + 1
+            return false
+    
+    if (left < right)
+        if (left + 1 < right)
+            return false
+
+    if (left > maxHeight) {
+        maxHeight = left;
+    }
+
+    if (right > maxHeight) {
+        maxHeight = right;
+    }
+
+    return maxHeight;
+
+Create function isBalanced(root = this.root)
+    set heights = []
+
+    Create function recursion(current = this.root, currentHeight = 0)
+        if current is null return
+
+        set left = recursion(current.left, currentHeight + 1)
+        set right = recursion(current.right, currentHeight + 1)
+        push currentHeight to heights
+
+    for i of heights
+        if heights[i] > heights[i-1]
+            if heights[i] > heights[i-1] + 1
+                return false
+        if heights[i] < heights[i-1]
+            if heights[i] + 1 < heights[i-1]
+                return false
+    
+    return true
+THIS MIGHT NOT WORK, MIGHT NEED TO TRAVERSE BINARY TREE A DIFFERENT WAY
+createfunction levelOrderDefault(current)
     
