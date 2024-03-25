@@ -349,6 +349,24 @@ Tree.prototype.isBalanced = function() {
     return true;
 }
 
+Tree.prototype.rebalance = function() {
+    let dataList = [];
+
+    function recursion(current = this.root) {
+        if (current == null) {
+            return;
+        }
+
+        recursion(current.left)
+        dataList.push(current.data);
+        recursion(current.right);
+
+    }
+
+    recursion(this.root);
+
+    this.root = this.buildTree(dataList);
+}
 
 
 export default Tree;
