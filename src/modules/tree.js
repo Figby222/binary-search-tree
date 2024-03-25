@@ -295,7 +295,58 @@ Tree.prototype.depth = function(current = this.root, value, currentDepth = 0) {
     if (value > current.data) {
         return this.depth(current.right, value, currentDepth + 1);
     }
-    
+
+}
+
+Tree.prototype.isBalanced = function() {
+    let minHeight = 0;
+    let maxHeight = 0;
+
+    function recursion(current = this.root, currentHeight = 0) {
+        if (current == null) {
+            currentHeight -= 1;
+            if (currentHeight < minHeight || !(minHeight)) {
+                minHeight = currentHeight;
+            }
+
+            if (currentHeight > maxHeight) {
+                maxHeight = currentHeight;
+            }
+            return;
+        }
+
+        recursion(current.left, currentHeight + 1);
+        recursion(current.right, currentHeight + 1);
+
+        // return currentHeight;
+    }
+
+    // function recursion2(current = this.root, currentHeight = 0) {
+    //     if (current == null) {
+    //         return;
+    //     }
+
+    //     const left = recursion2(current.left, currentHeight + 1);
+    //     const right = recursion2(current.right, currentHeight + 1);
+
+    //     if (currentHeight < minHeight || !(minHeight)) {
+    //         minHeight = currentHeight;
+    //     }
+
+    //     if (currentHeight > maxHeight) {
+    //         maxHeight = currentHeight;
+    //     }
+
+    //     return currentHeight;
+    // }
+
+    recursion(this.root);
+
+    if (maxHeight - 1 > minHeight) { // if maxHeight is 2 or more greater than minHeight
+        return false;
+    }
+
+    return true;
 }
 
 export { buildTree, balanceTree };

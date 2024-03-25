@@ -44,5 +44,7 @@ myTree.postOrder(myTree.root);
 console.log(myTree.height(myTree.root));
 myTree.insert(44);
 console.log(myTree.height());
-debugger;
 console.log(myTree.depth(myTree.root, 24))
+
+debugger;
+console.log(myTree.isBalanced());
