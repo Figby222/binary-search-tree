@@ -2,7 +2,7 @@ import mergeSort from './merge-sort.js';
 import Node from './node.js';
 
 const Tree = function(array) {
-    this.root = buildTree(array);
+    this.root = this.buildTree(array);
     
 }
 
@@ -135,15 +135,15 @@ Tree.prototype.getSmallest = function(root) {
     return this.getSmallest(root.left);
 }
 
-function buildTree(array) {
+Tree.prototype.buildTree = function(array) {
     const sortedArray = mergeSort(array);
 
-    const root = balanceTree(sortedArray);
+    const root = this.balanceTree(sortedArray);
 
     return root;
 }
 
-function balanceTree(array) {
+Tree.prototype.balanceTree = function(array) {
     if (array.length <= 0) {
         return null;
     }
@@ -152,8 +152,8 @@ function balanceTree(array) {
 
     const node = new Node(array[mid]);
 
-    node.left = balanceTree(array.slice(0, mid));
-    node.right = balanceTree(array.slice(mid + 1));
+    node.left = this.balanceTree(array.slice(0, mid));
+    node.right = this.balanceTree(array.slice(mid + 1));
 
     return node;
 }
@@ -349,5 +349,6 @@ Tree.prototype.isBalanced = function() {
     return true;
 }
 
-export { buildTree, balanceTree };
+
+
 export default Tree;
