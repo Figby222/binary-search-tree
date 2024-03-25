@@ -257,6 +257,7 @@ Tree.prototype.postOrder = function(root = this.root, callback = levelOrderDefau
     queue.forEach((node) => callback(node));
 }
 
+// make variables with default vals at end
 Tree.prototype.height = function(current = this.root, currentHeight = 0) {
     if (current == null) {
         return;
@@ -276,6 +277,25 @@ Tree.prototype.height = function(current = this.root, currentHeight = 0) {
     }
 
     return maxHeight;
+}
+
+Tree.prototype.depth = function(current = this.root, value, currentDepth = 0) {
+    if (current == null) {
+        return null;
+    }
+
+    if (value == current.data) {
+        return currentDepth;
+    }
+
+    if (value < current.data) {
+        return this.depth(current.left, value, currentDepth + 1);
+    }
+
+    if (value > current.data) {
+        return this.depth(current.right, value, currentDepth + 1);
+    }
+    
 }
 
 export { buildTree, balanceTree };
