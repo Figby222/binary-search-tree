@@ -257,5 +257,26 @@ Tree.prototype.postOrder = function(root = this.root, callback = levelOrderDefau
     queue.forEach((node) => callback(node));
 }
 
+Tree.prototype.height = function(current = this.root, currentHeight = 0) {
+    if (current == null) {
+        return;
+    }
+
+    let maxHeight = 0;
+
+    const left = this.height(current.left, currentHeight + 1)
+    const right = this.height(current.right, currentHeight + 1)
+
+    if (left > maxHeight) {
+        maxHeight = left;
+    }
+
+    if (right > maxHeight) {
+        maxHeight = right;
+    }
+
+    return maxHeight;
+}
+
 export { buildTree, balanceTree };
 export default Tree;
