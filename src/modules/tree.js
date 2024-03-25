@@ -31,7 +31,7 @@ Tree.prototype.insert = function(value) {
 
 }
 
-Tree.prototype.deleteItem = function(root = this.root, value) {
+Tree.prototype.deleteItem = function(value, root = this.root) {
     
     // if (root.left != null && value == root.left.data) { // 1 child, left target
     //     let parent = root.left;
@@ -112,7 +112,7 @@ Tree.prototype.deleteItem = function(root = this.root, value) {
 
     const nextSmallest = this.getSmallest(target.right);
 
-    this.deleteItem(this.root, nextSmallest.data);
+    this.deleteItem(nextSmallest.data);
 
     const temp = nextSmallest.data;
 
@@ -158,18 +158,18 @@ Tree.prototype.balanceTree = function(array) {
     return node;
 }
 
-Tree.prototype.find = function(root, value) {
+Tree.prototype.find = function(value, root = this.root) {
     if (root == null) {
-        return;
+        return null;
     }
 
     let data = false;
 
-    data = this.find(root.left, value);
+    data = this.find(value, root.left);
     if (root.data == value) {
         return root;
     }
-    data = this.find(root.right, value);
+    data = this.find(value, root.right);
 
     return data;
 }
@@ -279,7 +279,7 @@ Tree.prototype.height = function(current = this.root, currentHeight = 0) {
     return maxHeight;
 }
 
-Tree.prototype.depth = function(current = this.root, value, currentDepth = 0) {
+Tree.prototype.depth = function(value, current = this.root, currentDepth = 0) {
     if (current == null) {
         return null;
     }

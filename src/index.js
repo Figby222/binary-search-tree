@@ -23,27 +23,27 @@ myTree.insert(42);
 prettyPrint(myTree.root);
 myTree.insert(25);
 prettyPrint(myTree.root);
-myTree.deleteItem(myTree.root, 1);
+myTree.deleteItem(1);
 console.log("1 deleted");
 prettyPrint(myTree.root);
-myTree.deleteItem(myTree.root, 222);
+myTree.deleteItem(222);
 console.log("222 deleted");
 prettyPrint(myTree.root);
-myTree.deleteItem(myTree.root, 33);
+myTree.deleteItem(33);
 console.log("33 deleted");
 prettyPrint(myTree.root);
-myTree.deleteItem(myTree.root, 22);
+myTree.deleteItem(22);
 console.log("22 deleted");
 prettyPrint(myTree.root);
-console.log(myTree.find(myTree.root, 35));
-console.log(myTree.find(myTree.root, 24));
+console.log(myTree.find(35));
+console.log(myTree.find(4));
 
 // myTree.levelOrder(myTree.root);
 myTree.postOrder(myTree.root);
-console.log(myTree.height(myTree.root));
+console.log(myTree.height());
 myTree.insert(44);
 console.log(myTree.height());
-console.log(myTree.depth(myTree.root, 24))
+console.log(myTree.depth(24))
 
 console.log(myTree.isBalanced());
 debugger;
