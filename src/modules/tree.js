@@ -262,7 +262,7 @@ Tree.prototype.height = function(current = this.root, currentHeight = 0) {
         return;
     }
 
-    let maxHeight = 0;
+    let maxHeight = currentHeight;
 
     const left = this.height(current.left, currentHeight + 1)
     const right = this.height(current.right, currentHeight + 1)

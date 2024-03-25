@@ -39,7 +39,9 @@ prettyPrint(myTree.root);
 console.log(myTree.find(myTree.root, 35));
 console.log(myTree.find(myTree.root, 24));
 
-debugger;
 // myTree.levelOrder(myTree.root);
 myTree.postOrder(myTree.root);
+debugger;
 console.log(myTree.height(myTree.root));
+myTree.insert(44);
+console.log(myTree.height());
