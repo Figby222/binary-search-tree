@@ -185,6 +185,21 @@ Create function heightRecursive(current = this.root, currentHeight = 0)
 
     return maxHeight;
 
+Create function depth(current = this.root, value, currentDepth = 0)
+    if current is null return null;
+
+    if value == current.data
+        return currentDepth
+    
+    if value < current.data
+        return call to depth(current.left, value, currentDepth + 1)
+    
+    if value > current.data
+        return call to depth(current.right, value, currentDepth + 1)
+    
+DEPTH IS SIMILAR EXCPET IT CHECKS IF CURRENT.DATA IS EQUAL TO VALUE
+AND IT RETURNS CURRENHEIGHT IF THATS TRUE
+
 Create function isBalanced(current = this.root, currentHeight = 0)
     if current is null return
     set maxHeight = 0;
