@@ -174,7 +174,7 @@ Tree.prototype.find = function(value, root = this.root) {
     return data;
 }
 
-Tree.prototype.levelOrder = function(root = this.root, callback = levelOrderDefault) {
+Tree.prototype.levelOrder = function(root = this.root, callback = null) {
     let queue = [];
     queue.push(root);
     let current = 0;
@@ -195,7 +195,15 @@ Tree.prototype.levelOrder = function(root = this.root, callback = levelOrderDefa
     }
 
     recursion(current);
-    queue.forEach((node) => callback(node));
+
+    if (callback == null) {
+        console.log(queue);
+        return;
+    }
+
+    queue.forEach((node) => {
+        callback(node);
+    })
     
 }
 
@@ -203,7 +211,7 @@ function levelOrderDefault(node) {
     console.log(node.data);
 }
 
-Tree.prototype.inOrder = function(root = this.root, callback = levelOrderDefault) {
+Tree.prototype.inOrder = function(root = this.root, callback = null) {
     let queue = []
 
     function recursion(current) {
@@ -218,10 +226,17 @@ Tree.prototype.inOrder = function(root = this.root, callback = levelOrderDefault
 
     recursion(root);
 
-    queue.forEach((node) => callback(node));
+    if (callback == null) {
+        console.log(queue);
+        return;
+    }
+
+    queue.forEach((node) => {
+        callback(node);
+    })
 }
 
-Tree.prototype.preOrder = function(root = this.root, callback = levelOrderDefault) {
+Tree.prototype.preOrder = function(root = this.root, callback = null) {
     let queue = [];
 
     function recursion(current) {
@@ -236,10 +251,17 @@ Tree.prototype.preOrder = function(root = this.root, callback = levelOrderDefaul
 
     recursion(root);
 
-    queue.forEach((node) => callback(node));
+    if (callback == null) {
+        console.log(queue);
+        return;
+    }
+
+    queue.forEach((node) => {
+        callback(node);
+    })
 }
 
-Tree.prototype.postOrder = function(root = this.root, callback = levelOrderDefault) {
+Tree.prototype.postOrder = function(root = this.root, callback = null) {
     let queue = [];
 
     function recursion(current) {
@@ -254,7 +276,14 @@ Tree.prototype.postOrder = function(root = this.root, callback = levelOrderDefau
 
     recursion(root);
 
-    queue.forEach((node) => callback(node));
+    if (callback == null) {
+        console.log(queue);
+        return;
+    }
+
+    queue.forEach((node) => {
+        callback(node);
+    })
 }
 
 // make variables with default vals at end

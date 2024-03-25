@@ -24,7 +24,15 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
     return randomNumbers;
   }
 
-  
+  const myTree = new Tree(randomNumbers());
+  prettyPrint(myTree.root);
+
+  console.log(myTree.isBalanced());
+
+  myTree.levelOrder();
+  myTree.inOrder();
+  myTree.preOrder();
+  myTree.postOrder();
 
 // const myTree = new Tree([24, 12, 51, 33, 22, 1, 35, 21]);
 
