@@ -34,6 +34,26 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
   myTree.preOrder();
   myTree.postOrder();
 
+  for (let i = 0; i < 100; i++) {
+    const randomNumber = Math.ceil(Math.random() * 100000000);
+    myTree.insert(randomNumber);
+  }
+
+  prettyPrint(myTree.root);
+  
+  console.log(myTree.isBalanced());
+  
+  myTree.rebalance();
+  
+  prettyPrint(myTree.root);
+
+  console.log(myTree.isBalanced());
+
+  myTree.levelOrder();
+  myTree.inOrder();
+  myTree.preOrder();
+  myTree.postOrder();
+
 // const myTree = new Tree([24, 12, 51, 33, 22, 1, 35, 21]);
 
 // prettyPrint(myTree.root);
