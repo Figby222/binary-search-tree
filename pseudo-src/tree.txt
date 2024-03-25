@@ -202,6 +202,7 @@ AND IT RETURNS CURRENHEIGHT IF THATS TRUE
 
 Create function isBalanced(current = this.root, currentHeight = 0)
     if current is null return
+    set minHeight = 0;
     set maxHeight = 0;
 
     set left = isBalanced(current.left, currentHeight + 1)
@@ -226,14 +227,20 @@ Create function isBalanced(current = this.root, currentHeight = 0)
     return maxHeight;
 
 Create function isBalanced(root = this.root)
-    set heights = []
+    set minHeight = 0;
+    set maxHeight = 0;
 
     Create function recursion(current = this.root, currentHeight = 0)
-        if current is null return
+        if current is null 
+            set currentHeight to currentHeight - 1 
+            if currentHeight < minHeight
+                set minHeight to currentHeight
+            if currentHeight > maxHeight
+                set maxHeight to currentHeight
+            return
 
         set left = recursion(current.left, currentHeight + 1)
         set right = recursion(current.right, currentHeight + 1)
-        push currentHeight to heights
 
     for i of heights
         if heights[i] > heights[i-1]
@@ -244,6 +251,29 @@ Create function isBalanced(root = this.root)
                 return false
     
     return true
+Create function isBalanced()
+    set root to this.root
+    set current to this.root
+    set minHeight to 0
+    set maxHeight to 0
+
+    while true
+        
+Create function rebalance()
+    set dataList = []
+
+    Create function recursion(current = this.root)
+        if current is null return
+
+        call recursion(current.left)
+        push current.data to dataList
+        call recursion(current.right)
+
+    
+    call recursion(this.root)
+
+    set this.root to buildTree(dataList)
+
 THIS MIGHT NOT WORK, MIGHT NEED TO TRAVERSE BINARY TREE A DIFFERENT WAY
 createfunction levelOrderDefault(current)
     
